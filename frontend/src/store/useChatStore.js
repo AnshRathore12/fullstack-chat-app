@@ -27,7 +27,8 @@ export const useChatStore=create((set,get)=>({
   getMessages:async(userId)=>{
     set({isMessagesLoading:true})
     try {
-      const res = await axiosInstance.get(`/messages/${userId}`);
+      // const res = await axiosInstance.get(`/messages/${userId}`);
+      const res = await axiosInstance.get(`/messages/chat/${userId}`);
       console.log("API /messages/:userId response:", res.data);
 
       set({ messages: Array.isArray(res.data?.filteredMessages) ? res.data.filteredMessages : (Array.isArray(res.data?.messages) ? res.data.messages : []) });
